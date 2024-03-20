@@ -1,0 +1,35 @@
+Part A Details
+High-level explanation of the algorithm
+The algorithm used in this task is the Nearest Neighbor (NN) algorithm, a heuristic method for approximating solutions to the Travelling Salesman Problem (TSP). The TSP is a classic optimization challenge that seeks the shortest possible route to visit a set of nodes (cities, locations, etc.) exactly once and return to the origin point. The Nearest Neighbor algorithm tackles this problem by following a simple yet effective approach:
+
+Start at an arbitrary node: The algorithm begins at a predetermined starting point. In the context of the provided Python code, this starting point is a depot.
+
+Find the nearest unvisited node: From the current node, the algorithm searches for the closest node that has not yet been visited. This is determined by calculating the distance to all unvisited nodes and selecting the one with the minimum distance.
+
+Move to the nearest node: Once the nearest unvisited node is identified, the algorithm moves to this node, marking it as visited.
+
+Repeat until all nodes are visited: Steps 2 and 3 are repeated for each new current node until all nodes in the dataset have been visited.
+
+Return to the starting node: After visiting all nodes, the algorithm concludes by returning to the starting node, completing the circuit.
+
+This approach is favored for its simplicity and efficiency, particularly in scenarios where a quick, approximate solution is more valuable than an exact, optimal route that might require significantly more computational resources to determine.
+
+Algorithm time complexity and space complexity
+Time Complexity
+The time complexity of the Nearest Neighbor algorithm is primarily determined by the need to search for the nearest unvisited node at each step of the process. For a dataset containing (n) nodes, the algorithm:
+
+Initially compares the first node to the remaining (n-1) nodes to find the nearest neighbor.
+Then, for the second node, it compares against (n-2) remaining nodes, and so forth.
+This sequential reduction in comparisons leads to a total of ((n-1) + (n-2) + \ldots + 1) comparisons, which simplifies to the sum of the first (n-1) natural numbers. The sum (\frac{n(n-1)}{2}) results in a time complexity of (O(n^2)).
+
+Space Complexity
+The space complexity is influenced by two main factors:
+
+Distance matrix: Stores the pairwise distances between all nodes, requiring (O(n^2)) space.
+
+Path list: Records the sequence of visited nodes. Since it stores (n+1) entries (including the return to the starting node), it has a space complexity of (O(n)).
+
+However, the dominant factor is the distance matrix, leading to an overall space complexity of (O(n^2)).
+
+Conclusion
+The Nearest Neighbor algorithm provides a practical means of approximating solutions to the Travelling Salesman Problem, especially in cases where an exact solution is not feasible due to computational constraints. Its (O(n^2)) time complexity and space complexity make it a suitable choice for medium-sized datasets, offering a balance between computational efficiency and solution accuracy.

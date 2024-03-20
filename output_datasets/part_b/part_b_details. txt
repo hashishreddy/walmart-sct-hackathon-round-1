@@ -1,0 +1,25 @@
+Extension of the Nearest Neighbor Algorithm for Two Drivers
+Building upon the foundation laid in Part A, where the Nearest Neighbor algorithm is used to find a route that visits all given locations exactly once before returning to the depot, Part B introduces a new requirement: splitting the resulting path to accommodate two drivers. This involves dividing the computed path into two segments in such a way that both drivers share the workload as evenly as possible, with both their routes starting and ending at the depot.
+
+Algorithm for Splitting the Path
+The process of dividing the path for two drivers can be outlined as follows:
+
+Compute the Full Path: First, apply the Nearest Neighbor algorithm to determine the route that visits all locations (including the depot as the starting and ending point).
+
+Split the Path: Divide this path into two segments intended for two drivers. This division is initially made by simply cutting the path in half, ensuring both drivers are assigned to roughly an equal number of stops. The first segment is assigned to Driver 1, and the contiguous second segment is assigned to Driver 2.
+
+Adjust for Return to Depot: Ensure both segments are valid routes by adjusting them to start and end at the depot. If the ending point of the first segment or the starting point of the second segment is not the depot, the path is modified by appending the depot to these segments.
+
+Calculate Individual Distances: Compute the total distance that each driver would cover based on their respective segments.
+
+Implementation Details
+The path is split at the midpoint to ensure an equitable distribution of the delivery locations between the two drivers.
+To maintain the integrity of the delivery route, the starting segment of the second path overlaps with the ending segment of the first path by one node (the midpoint). This overlap is necessary to ensure continuity and that both drivers return to the depot, albeit it might slightly imbalance the workload.
+The adjustment for returning to the depot is crucial for logistics, ensuring that both drivers can start and end their routes at the central depot without the need for additional transportation.
+Complexity Analysis
+Time Complexity: The time complexity of splitting the path and calculating the distances for two drivers remains O(n), where n is the number of stops (including the depot). This is because the operation involves a single pass through the computed path to split it and additional passes to calculate the total distances for each driver.
+
+Space Complexity: The space complexity is also O(n), as the procedure requires storing the paths for both drivers in addition to the original path computed by the Nearest Neighbor algorithm.
+
+Conclusion
+The approach detailed in Part B effectively extends the Nearest Neighbor solution from Part A to accommodate a two-driver scenario, ensuring equitable distribution of delivery tasks and adherence to logistical constraints such as starting and ending at the depot. This method strikes a balance between computational efficiency and operational practicality, making it suitable for scenarios where quick and effective distribution of tasks is paramount.
